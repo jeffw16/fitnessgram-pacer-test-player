@@ -19,6 +19,7 @@
         <button class="btn btn-lg btn-success" id="play"><span style="glyphicon glyphicon-play"></span> Play</button>
         <button class="btn btn-lg btn-default" id="pause"><span style="glyphicon glyphicon-pause"></span> Pause</button>
         <button class="btn btn-lg btn-danger" id="stop"><span style="glyphicon glyphicon-stop"></span> Stop</button>
+        <p class="lead" id="time"></p>
       </div><!-- .col-sm-12 -->
     </div><!-- .row -->
   </div><!-- .container -->
@@ -33,8 +34,16 @@
   <script>
     var audio = new Howl({ src: ['FitnessGram 20-Meter PACER Test OFFICIAL AUDIO (Part 1).mp3'] });
     var loaded = false;
+    var timer;
     audio.on('load', function() {
       loaded = true;
+      timer = new countdown(
+        null, Math.round(new Date().getTime()/1000) + 40,
+        function(ts) {
+          document.getElementById('time').innerHTML = ts.toHTML("strong");
+        },
+        countdown.MINUTES|countdown.SECONDS
+      );
       document.getElementById('status').innerHTML = 'Loaded!';
     });
     $('#play').click(function() {
