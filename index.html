@@ -15,6 +15,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12">
+        <p id="status">Loading&hellip;</p>
         <button class="btn btn-lg btn-success" id="play"><span style="glyphicon glyphicon-play"></span> Play</button>
         <button class="btn btn-lg btn-default" id="pause"><span style="glyphicon glyphicon-pause"></span> Pause</button>
         <button class="btn btn-lg btn-danger" id="stop"><span style="glyphicon glyphicon-stop"></span> Stop</button>
@@ -31,8 +32,15 @@
   </script>
   <script>
     var audio = new Howl({ src: ['FitnessGram 20-Meter PACER Test OFFICIAL AUDIO (Part 1).mp3'] });
+    var loaded = false;
+    audio.on('load', function() {
+      loaded = true;
+      document.getElementById('status').innerHTML = 'Loaded!';
+    });
     $('#play').click(function() {
-      if ( !audio.playing() ) {
+      if ( !loaded ) {
+        alert('Audio file not yet loaded. Please wait.');
+      } else if ( !audio.playing() ) {
         audio.play();
       }
     });
