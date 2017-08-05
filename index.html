@@ -37,19 +37,19 @@
     var timer;
     audio.on('load', function() {
       loaded = true;
-      timer = new countdown(
-        null, Math.round(new Date().getTime()/1000) + 40,
-        function(ts) {
-          document.getElementById('time').innerHTML = ts.toHTML("strong");
-        },
-        countdown.MINUTES|countdown.SECONDS
-      );
       document.getElementById('status').innerHTML = 'Loaded!';
     });
     $('#play').click(function() {
       if ( !loaded ) {
         alert('Audio file not yet loaded. Please wait.');
       } else if ( !audio.playing() ) {
+        timer = new countdown(
+          null, Math.round(new Date().getTime()/1000) + 40,
+          function(ts) {
+            document.getElementById('time').innerHTML = ts.toHTML("strong");
+          },
+          countdown.MINUTES|countdown.SECONDS
+        );
         audio.play();
       }
     });
