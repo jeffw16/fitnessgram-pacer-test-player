@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>FitnessGram Pacer Test Player</title>
+  <!-- Twitter Bootstrap CSS [3.3.7] (Bootstrap CDN) +SRI -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body lang="en">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>FitnessGram Pacer Test <small>Player</small></h1>
+      </div><!-- .col-xs-12 -->
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn btn-lg btn-success" id="play"><span style="glyphicon glyphicon-play"></span> Play</button>
+        <button class="btn btn-lg btn-default" id="pause"><span style="glyphicon glyphicon-pause"></span> Pause</button>
+        <button class="btn btn-lg btn-danger" id="stop"><span style="glyphicon glyphicon-stop"></span> Stop</button>
+      </div><!-- .col-sm-12 -->
+    </div><!-- .row -->
+  </div><!-- .container -->
+  <!-- jQuery [3.2.1] (Google Hosted Libraries) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Twitter Bootstrap [3.3.7] (Bootstrap CDN) +SRI -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- howler.js [2.0.4] (CDNJS) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.min.js"></script>
+  <script>
+  </script>
+  <script>
+    var audio = new Howl({ src: ['FitnessGram 20-Meter PACER Test OFFICIAL AUDIO (Part 1).mp3'] });
+    $('#play').click(function() {
+      if ( !audio.playing() ) {
+        audio.play();
+      }
+    });
+    $('#pause').click(function() {    
+      if ( audio.playing() ) {
+        audio.pause();
+      }
+    });
+    $('#stop').click(function() {    
+      audio.stop();
+    });
+  </script>
+</body>
+</html>
